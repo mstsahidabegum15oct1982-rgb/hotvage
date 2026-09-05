@@ -1,0 +1,197 @@
+/* =========================================
+   HOTVAGE.COM
+   Main JavaScript
+========================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    /* =========================================
+       MOBILE MENU
+    ========================================= */
+
+    const menuButton = document.querySelector(".menu-button");
+
+    if (menuButton) {
+        menuButton.addEventListener("click", function () {
+            document.body.classList.toggle("menu-open");
+        });
+    }
+
+
+    /* =========================================
+       SEARCH BUTTON
+    ========================================= */
+
+    const searchButton = document.querySelector(".search-button");
+
+    if (searchButton) {
+        searchButton.addEventListener("click", function () {
+
+            const searchTerm = window.prompt(
+                "What video are you looking for?"
+            );
+
+            if (searchTerm && searchTerm.trim() !== "") {
+
+                const query = encodeURIComponent(
+                    searchTerm.trim()
+                );
+
+                window.location.href =
+                    "pages/search.html?q=" + query;
+            }
+
+        });
+    }
+
+
+    /* =========================================
+       TIME FILTER
+    ========================================= */
+
+    const timeFilter =
+        document.querySelector(".time-filter");
+
+    if (timeFilter) {
+
+        timeFilter.addEventListener("change", function () {
+
+            const selectedValue = this.value;
+
+            /*
+             * Backend/database filtering will be
+             * connected later.
+             */
+
+            console.log(
+                "Selected video filter:",
+                selectedValue
+            );
+
+        });
+    }
+
+
+    /* =========================================
+       LOAD MORE BUTTON
+    ========================================= */
+
+    const loadMoreButton =
+        document.querySelector(".load-more-button");
+
+    if (loadMoreButton) {
+
+        loadMoreButton.addEventListener("click", function () {
+
+            /*
+             * Real videos will be loaded from
+             * PHP/MySQL later.
+             */
+
+            this.textContent = "Loading...";
+
+            setTimeout(() => {
+
+                this.textContent = "More Videos Coming Soon";
+
+                this.disabled = true;
+
+            }, 700);
+
+        });
+    }
+
+
+    /* =========================================
+       VIDEO CARD CLICK
+    ========================================= */
+
+    const videoCards =
+        document.querySelectorAll(".video-card");
+
+    videoCards.forEach(function (card) {
+
+        card.addEventListener("keydown", function (event) {
+
+            if (event.key === "Enter") {
+
+                const link =
+                    card.querySelector(".video-thumbnail");
+
+                if (link) {
+                    link.click();
+                }
+
+            }
+
+        });
+
+    });
+
+
+    /* =========================================
+       HORIZONTAL SCROLL WITH MOUSE WHEEL
+    ========================================= */
+
+    const horizontalAreas =
+        document.querySelectorAll(
+            ".navigation-scroll, .trending-scroll"
+        );
+
+    horizontalAreas.forEach(function (area) {
+
+        area.addEventListener(
+            "wheel",
+            function (event) {
+
+                if (window.innerWidth <= 900) {
+
+                    if (Math.abs(event.deltaY) >
+                        Math.abs(event.deltaX)) {
+
+                        area.scrollLeft += event.deltaY;
+
+                    }
+
+                }
+
+            },
+            { passive: true }
+        );
+
+    });
+
+
+    /* =========================================
+       PREVENT EMPTY LINKS
+    ========================================= */
+
+    const emptyLinks =
+        document.querySelectorAll('a[href="#"]');
+
+    emptyLinks.forEach(function (link) {
+
+        link.addEventListener("click", function (event) {
+
+            event.preventDefault();
+
+        });
+
+    });
+
+
+    /* =========================================
+       CURRENT YEAR
+    ========================================= */
+
+    const yearElements =
+        document.querySelectorAll(".current-year");
+
+    yearElements.forEach(function (element) {
+
+        element.textContent =
+            new Date().getFullYear();
+
+    });
+
+});
