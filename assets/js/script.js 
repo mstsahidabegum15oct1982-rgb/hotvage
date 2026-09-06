@@ -497,42 +497,6 @@ function openVideoAd() {
 
 
     /* =========================================
-       AUTOMATICALLY ADD SVG TO ALL
-       PREVIEW BUTTONS
-    ========================================= */
-
-    function setupPreviewButtons() {
-
-        const buttons =
-            document.querySelectorAll(
-                ".play-overlay"
-            );
-
-        buttons.forEach(function (button) {
-
-            if (
-                !button.querySelector(
-                    ".preview-play-svg"
-                )
-            ) {
-
-                button.innerHTML = "";
-
-                button.appendChild(
-                    createPreviewSVG()
-                );
-
-            }
-
-        });
-
-    }
-
-
-    setupPreviewButtons();
-
-
-    /* =========================================
        PREVIEW BUTTON + GLOBAL AD GATE
     ========================================= */
 
