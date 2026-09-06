@@ -1,1 +1,68 @@
-.
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url>
+    <loc>https://hotvage.com/</loc>
+  </url>
+
+  <url>
+    <loc>https://hotvage.com/categories/index.html</loc>
+  </url>
+
+  <url>
+    <loc>https://hotvage.com/videos/most-viewed.html</loc>
+  </url>
+
+  <url>
+    <loc>https://hotvage.com/videos/new.html</loc>
+  </url>
+
+  <url>
+    <loc>https://hotvage.com/videos/video.html</loc>
+  </url>
+
+  <url>
+    <loc>https://hotvage.com/categories/entertainment.html</loc>
+  </url>
+
+  <url>
+    <loc>https://hotvage.com/categories/sports.html</loc>
+  </url>
+
+  <url>
+    <loc>https://hotvage.com/categories/music.html</loc>
+  </url>
+
+  <url>
+    <loc>https://hotvage.com/categories/technology.html</loc>
+  </url>
+
+  <url>
+    <loc>https://hotvage.com/categories/education.html</loc>
+  </url>
+
+  <url>
+    <loc>https://hotvage.com/pages/about.html</loc>
+  </url>
+
+  <url>
+    <loc>https://hotvage.com/pages/contact.html</loc>
+  </url>
+
+  <url>
+    <loc>https://hotvage.com/pages/privacy-policy.html</loc>
+  </url>
+
+  <url>
+    <loc>https://hotvage.com/pages/terms.html</loc>
+  </url>
+
+  <url>
+    <loc>https://hotvage.com/pages/disclaimer.html</loc>
+  </url>
+
+  <url>
+    <loc>https://hotvage.com/pages/search.html</loc>
+  </url>
+
+</urlset>
