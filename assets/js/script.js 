@@ -194,4 +194,39 @@ document.addEventListener("DOMContentLoaded", function () {
 
     });
 
+    /* =========================================
+       GLOBAL VIDEO AD GATE
+    ========================================= */
+
+    const VIDEO_AD_URL = "YOUR_AD_LINK_HERE";
+
+    function openVideoAd() {
+
+        const adShown =
+            sessionStorage.getItem("hotvage_ad_shown");
+
+        if (!adShown) {
+
+            sessionStorage.setItem(
+                "hotvage_ad_shown",
+                "true"
+            );
+
+            if (
+                VIDEO_AD_URL &&
+                VIDEO_AD_URL !== "YOUR_AD_LINK_HERE"
+            ) {
+                window.open(
+                    VIDEO_AD_URL,
+                    "_blank",
+                    "noopener,noreferrer"
+                );
+            }
+
+            return false;
+        }
+
+        return true;
+    }
+
 });
