@@ -229,8 +229,9 @@ function openVideoAd() {
     return true;
 }
 
-    /* =========================================
-       AUTO SVG PREVIEW BUTTON
+        /* =========================================
+       AUTO FINGER / TAP PREVIEW BUTTON
+       Automatically created by JavaScript
     ========================================= */
 
     function createPreviewSVG() {
@@ -265,103 +266,234 @@ function openVideoAd() {
         );
 
 
-        const outerCircle =
+        /* =====================================
+           OUTER CIRCLE
+        ===================================== */
+
+        const circle =
             document.createElementNS(
                 svgNS,
                 "circle"
             );
 
-        outerCircle.setAttribute(
+        circle.setAttribute(
             "cx",
             "50"
         );
 
-        outerCircle.setAttribute(
+        circle.setAttribute(
             "cy",
             "50"
         );
 
-        outerCircle.setAttribute(
+        circle.setAttribute(
             "r",
-            "43"
+            "44"
         );
 
-        outerCircle.setAttribute(
+        circle.setAttribute(
             "fill",
-            "rgba(255,255,255,0.78)"
+            "rgba(255,255,255,0.80)"
         );
 
-        outerCircle.setAttribute(
+        circle.setAttribute(
             "stroke",
             "rgba(255,255,255,0.95)"
         );
 
-        outerCircle.setAttribute(
-            "stroke-width",
-            "3"
-        );
-
-
-        const playPath =
-            document.createElementNS(
-                svgNS,
-                "path"
-            );
-
-        playPath.setAttribute(
-            "d",
-            "M42 32 L42 68 L70 50 Z"
-        );
-
-        playPath.setAttribute(
-            "fill",
-            "#111111"
-        );
-
-
-        const innerCircle =
-            document.createElementNS(
-                svgNS,
-                "circle"
-            );
-
-        innerCircle.setAttribute(
-            "cx",
-            "50"
-        );
-
-        innerCircle.setAttribute(
-            "cy",
-            "50"
-        );
-
-        innerCircle.setAttribute(
-            "r",
-            "47"
-        );
-
-        innerCircle.setAttribute(
-            "fill",
-            "none"
-        );
-
-        innerCircle.setAttribute(
-            "stroke",
-            "rgba(255,255,255,0.35)"
-        );
-
-        innerCircle.setAttribute(
+        circle.setAttribute(
             "stroke-width",
             "2"
         );
 
 
-        svg.appendChild(outerCircle);
-        svg.appendChild(playPath);
-        svg.appendChild(innerCircle);
+        /* =====================================
+           FINGER / HAND ICON
+        ===================================== */
+
+        const finger =
+            document.createElementNS(
+                svgNS,
+                "path"
+            );
+
+        finger.setAttribute(
+            "d",
+            "M43 68 C40 65 39 61 40 57 L43 39 C43.5 36 46 34 48.5 35 C51 36 52 38 52 41 L51 53 L55 45 C56 42.5 58.5 41.5 60.5 43 C62.5 44 63 46 62 48.5 L59 57 C63 56 67 57.5 69 60.5 C71 64 70 69 67 73 C64 77 59 80 53 80 C48 80 45 76 43 68 Z"
+        );
+
+        finger.setAttribute(
+            "fill",
+            "#111111"
+        );
+
+
+        /* =====================================
+           TAP RIPPLE
+        ===================================== */
+
+        const ripple =
+            document.createElementNS(
+                svgNS,
+                "circle"
+            );
+
+        ripple.setAttribute(
+            "cx",
+            "50"
+        );
+
+        ripple.setAttribute(
+            "cy",
+            "27"
+        );
+
+        ripple.setAttribute(
+            "r",
+            "6"
+        );
+
+        ripple.setAttribute(
+            "fill",
+            "none"
+        );
+
+        ripple.setAttribute(
+            "stroke",
+            "#111111"
+        );
+
+        ripple.setAttribute(
+            "stroke-width",
+            "3"
+        );
+
+
+        /* =====================================
+           TAP RIPPLE LEFT
+        ===================================== */
+
+        const rippleLeft =
+            document.createElementNS(
+                svgNS,
+                "path"
+            );
+
+        rippleLeft.setAttribute(
+            "d",
+            "M36 27 C36 22 39 18 43 16"
+        );
+
+        rippleLeft.setAttribute(
+            "fill",
+            "none"
+        );
+
+        rippleLeft.setAttribute(
+            "stroke",
+            "#111111"
+        );
+
+        rippleLeft.setAttribute(
+            "stroke-width",
+            "3"
+        );
+
+        rippleLeft.setAttribute(
+            "stroke-linecap",
+            "round"
+        );
+
+
+        /* =====================================
+           TAP RIPPLE RIGHT
+        ===================================== */
+
+        const rippleRight =
+            document.createElementNS(
+                svgNS,
+                "path"
+            );
+
+        rippleRight.setAttribute(
+            "d",
+            "M64 27 C64 22 61 18 57 16"
+        );
+
+        rippleRight.setAttribute(
+            "fill",
+            "none"
+        );
+
+        rippleRight.setAttribute(
+            "stroke",
+            "#111111"
+        );
+
+        rippleRight.setAttribute(
+            "stroke-width",
+            "3"
+        );
+
+        rippleRight.setAttribute(
+            "stroke-linecap",
+            "round"
+        );
+
+
+        /* =====================================
+           ADD SVG ELEMENTS
+        ===================================== */
+
+        svg.appendChild(circle);
+
+        svg.appendChild(ripple);
+
+        svg.appendChild(rippleLeft);
+
+        svg.appendChild(rippleRight);
+
+        svg.appendChild(finger);
+
 
         return svg;
     }
+
+
+    /* =========================================
+       AUTOMATICALLY ADD FINGER BUTTON
+       TO ALL VIDEO PREVIEW BUTTONS
+    ========================================= */
+
+    function setupPreviewButtons() {
+
+        const buttons =
+            document.querySelectorAll(
+                ".play-overlay"
+            );
+
+        buttons.forEach(function (button) {
+
+            if (
+                !button.querySelector(
+                    ".preview-play-svg"
+                )
+            ) {
+
+                button.innerHTML = "";
+
+                button.appendChild(
+                    createPreviewSVG()
+                );
+
+            }
+
+        });
+
+    }
+
+
+    setupPreviewButtons();
 
 
     /* =========================================
