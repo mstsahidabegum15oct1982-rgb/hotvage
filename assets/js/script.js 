@@ -195,38 +195,40 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     /* =========================================
-       GLOBAL VIDEO AD GATE
-    ========================================= */
+   GLOBAL VIDEO AD GATE
+========================================= */
 
-    const VIDEO_AD_URL = "YOUR_AD_LINK_HERE";
+const VIDEO_AD_URL = "YOUR_AD_LINK_HERE";
 
-    function openVideoAd() {
+function openVideoAd() {
 
-        const adShown =
-            sessionStorage.getItem("hotvage_ad_shown");
+    const adShown =
+        sessionStorage.getItem("hotvage_ad_shown");
 
-        if (!adShown) {
+    if (!adShown) {
 
-            sessionStorage.setItem(
-                "hotvage_ad_shown",
-                "true"
+        sessionStorage.setItem(
+            "hotvage_ad_shown",
+            "true"
+        );
+
+        if (
+            VIDEO_AD_URL &&
+            VIDEO_AD_URL !== "YOUR_AD_LINK_HERE"
+        ) {
+            window.open(
+                VIDEO_AD_URL,
+                "_blank",
+                "noopener,noreferrer"
             );
-
-            if (
-                VIDEO_AD_URL &&
-                VIDEO_AD_URL !== "YOUR_AD_LINK_HERE"
-            ) {
-                window.open(
-                    VIDEO_AD_URL,
-                    "_blank",
-                    "noopener,noreferrer"
-                );
-            }
-
-            return false;
         }
 
-        return true;
+        return false;
     }
+
+    return true;
+}
+
+( YOUR NEW CODE COPY PASTE )
 
 });
