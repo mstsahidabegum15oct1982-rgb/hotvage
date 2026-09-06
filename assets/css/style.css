@@ -668,3 +668,12 @@ button {
   }
 
 }
+/* VIDEO IMAGE */
+
+.video-thumbnail img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  display: block;
+  object-fit: cover;
+  border-radius: 12px;
+}
