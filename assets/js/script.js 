@@ -229,6 +229,217 @@ function openVideoAd() {
     return true;
 }
 
-( YOUR NEW CODE COPY PASTE )
+    /* =========================================
+       AUTO SVG PREVIEW BUTTON
+    ========================================= */
 
+    function createPreviewSVG() {
+
+        const svgNS =
+            "http://www.w3.org/2000/svg";
+
+        const svg =
+            document.createElementNS(
+                svgNS,
+                "svg"
+            );
+
+        svg.setAttribute(
+            "class",
+            "preview-play-svg"
+        );
+
+        svg.setAttribute(
+            "viewBox",
+            "0 0 100 100"
+        );
+
+        svg.setAttribute(
+            "aria-hidden",
+            "true"
+        );
+
+        svg.setAttribute(
+            "focusable",
+            "false"
+        );
+
+
+        const outerCircle =
+            document.createElementNS(
+                svgNS,
+                "circle"
+            );
+
+        outerCircle.setAttribute(
+            "cx",
+            "50"
+        );
+
+        outerCircle.setAttribute(
+            "cy",
+            "50"
+        );
+
+        outerCircle.setAttribute(
+            "r",
+            "43"
+        );
+
+        outerCircle.setAttribute(
+            "fill",
+            "rgba(255,255,255,0.78)"
+        );
+
+        outerCircle.setAttribute(
+            "stroke",
+            "rgba(255,255,255,0.95)"
+        );
+
+        outerCircle.setAttribute(
+            "stroke-width",
+            "3"
+        );
+
+
+        const playPath =
+            document.createElementNS(
+                svgNS,
+                "path"
+            );
+
+        playPath.setAttribute(
+            "d",
+            "M42 32 L42 68 L70 50 Z"
+        );
+
+        playPath.setAttribute(
+            "fill",
+            "#111111"
+        );
+
+
+        const innerCircle =
+            document.createElementNS(
+                svgNS,
+                "circle"
+            );
+
+        innerCircle.setAttribute(
+            "cx",
+            "50"
+        );
+
+        innerCircle.setAttribute(
+            "cy",
+            "50"
+        );
+
+        innerCircle.setAttribute(
+            "r",
+            "47"
+        );
+
+        innerCircle.setAttribute(
+            "fill",
+            "none"
+        );
+
+        innerCircle.setAttribute(
+            "stroke",
+            "rgba(255,255,255,0.35)"
+        );
+
+        innerCircle.setAttribute(
+            "stroke-width",
+            "2"
+        );
+
+
+        svg.appendChild(outerCircle);
+        svg.appendChild(playPath);
+        svg.appendChild(innerCircle);
+
+        return svg;
+    }
+
+
+    /* =========================================
+       AUTOMATICALLY ADD SVG TO ALL
+       PREVIEW BUTTONS
+    ========================================= */
+
+    function setupPreviewButtons() {
+
+        const buttons =
+            document.querySelectorAll(
+                ".play-overlay"
+            );
+
+        buttons.forEach(function (button) {
+
+            if (
+                !button.querySelector(
+                    ".preview-play-svg"
+                )
+            ) {
+
+                button.innerHTML = "";
+
+                button.appendChild(
+                    createPreviewSVG()
+                );
+
+            }
+
+        });
+
+    }
+
+
+    setupPreviewButtons();
+
+
+    /* =========================================
+       PREVIEW BUTTON + GLOBAL AD GATE
+    ========================================= */
+
+    document.addEventListener(
+        "click",
+        function (event) {
+
+            const button =
+                event.target.closest(
+                    ".play-overlay"
+                );
+
+            if (!button) {
+                return;
+            }
+
+            event.preventDefault();
+            event.stopPropagation();
+
+
+            const adCanContinue =
+                openVideoAd();
+
+
+            if (!adCanContinue) {
+                return;
+            }
+
+
+            /* Second click:
+               Preview will be connected
+               to the video player system.
+            */
+
+            console.log(
+                "Video Preview Started"
+            );
+
+        },
+        true
+    );
 });
